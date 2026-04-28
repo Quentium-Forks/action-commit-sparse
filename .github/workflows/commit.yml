@@ -3,12 +3,13 @@ on:
 
 jobs:
   scans:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     name: Sparse commit
     steps:
       - uses: actions/checkout@v6
         with:
           ref: ${{ github.ref }}
+          sparse-checkout: urls.txt
           persist-credentials: true
 
       - run: pwd && ls
@@ -17,7 +18,7 @@ jobs:
 
       - uses: EndBug/add-and-commit@v10
         with:
-          add: "results"
+          add: "--sparse results"
           default_author: "github_actions"
           message: "commit"
           github_token: ${{ secrets.GITHUB_TOKEN }}
