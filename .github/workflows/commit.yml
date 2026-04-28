@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Sparse commit
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           ref: ${{ github.ref }}
           sparse-checkout: urls.txt
@@ -15,7 +15,7 @@ jobs:
 
       - run: mkdir ${{ github.workspace }}/results && touch ${{ github.workspace }}/results/$RANDOM.txt
 
-      - uses: EndBug/add-and-commit@v9
+      - uses: EndBug/add-and-commit@v10
         with:
           add: "--sparse results"
           pull: "--rebase --autostash ..."
