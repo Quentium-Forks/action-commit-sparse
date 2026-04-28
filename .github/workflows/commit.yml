@@ -13,11 +13,11 @@ jobs:
 
       - run: pwd && ls
 
-      - run: mkdir ${{ github.workspace }}/results && touch ${{ github.workspace }}/results/$RANDOM.txt
+      - run: mkdir -p ${{ github.workspace }}/results && touch ${{ github.workspace }}/results/$RANDOM.txt
 
       - uses: EndBug/add-and-commit@v10
         with:
-          add: "results/*"
+          add: "results"
           pull: "--rebase --autostash ..."
           default_author: "github_actions"
           message: "commit"
